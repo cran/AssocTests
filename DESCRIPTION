@@ -1,7 +1,7 @@
 Package: AssocTests
 Type: Package
 Title: Genetic Association Studies
-Version: 0.0-1
+Version: 0.0-2
 Date: 2015-06-21
 Author: Lin Wang [aut], 
 	Wei Zhang [aut], 
@@ -31,7 +31,7 @@ Description: Some procedures including EIGENSTRAT (a procedure for
 	and a quantitative trait using the maximum value of the three
 	nonparametric trend tests derived for the recessive, additive, and
 	dominant models), which are commonly used in genetic association studies.
-License: GPL
+License: GPL-2
 Collate: 'AssociationTestWithCorrectPS.R' 'CalculateGapK.R'
         'CalculateWAll.R' 'CalExpect.R' 'ChangeX.R' 'CorrMatNRTest.R'
         'DR_main.R' 'EigenStrat_main.R' 'FindCNumRandom.R'
@@ -41,6 +41,6 @@ Collate: 'AssociationTestWithCorrectPS.R' 'CalculateGapK.R'
         'SMT_main.R' 'Str2Num.R' 'TrendTest.R' 'TW_main.R'
         'UniformSample.R' 'UniformTest.R' 'WaldTest.R'
 NeedsCompilation: no
-Packaged: 2015-06-21 14:52:12 UTC; Administrator
+Packaged: 2015-06-24 02:56:00 UTC; Administrator
 Repository: CRAN
-Date/Publication: 2015-06-22 01:45:34
+Date/Publication: 2015-06-26 14:00:29
