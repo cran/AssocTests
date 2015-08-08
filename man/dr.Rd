@@ -16,20 +16,30 @@ the null space in the \code{x.mat}.}
 \item{x.mat}{the covariate matrix which combines the null space
 and the matrix of interest.}
 
-\item{permute}{logical. If TRUE, the Monter Carlo sampling is used
+\item{permute}{logical. If \code{TRUE}, the Monter Carlo sampling is used
 without replacement; otherwise, with replacement. The default is
-TRUE.}
+\code{TRUE}.}
 
 \item{n.MonterCarlo}{the number of times for the Monter Carlo
-procedure. The default is 1000.}
+procedure. The default is \code{1000}.}
 
-\item{seed}{if it is not NULL, set the random number generator
-state for random number generation. The default is NULL.}
+\item{seed}{if it is not \code{NULL}, set the random number generator
+state for random number generation. The default is \code{NULL}.}
 }
 \value{
-A list of \code{test.stat} and
-\code{p.val}. \code{test.stat} is the observed value of the test
-statistic and \code{p.val} is the p-value of the test.
+A list with class "\code{htest}" containing the following components:
+\tabular{llll}{
+\code{statistic} \tab \tab \tab \cr
+\tab \tab \tab the observed value of the test statistic.\cr
+\code{p.value} \tab \tab \tab \cr
+\tab \tab \tab the p-value for the test.\cr
+\code{alternative} \tab \tab \tab \cr
+\tab \tab \tab a character string describing the alternative hypothesis.\cr
+\code{method} \tab \tab \tab \cr
+\tab \tab \tab a character string indicating the type of test performed.\cr
+\code{data.name} \tab \tab \tab \cr
+\tab \tab \tab a character string giving the names of the data.
+}
 }
 \description{
 Conduct the distance regression with or without the adjustment of
@@ -54,19 +64,19 @@ Lin Wang, Wei Zhang, and Qizhai Li.
 }
 \references{
 Q Li, S Wacholder, DJ Hunter, RN Hoover, S Chanock, G
-Thomas, and K Yu. Genetic background comparison using
-distance-based regression, with applications in population
-stratification evaluation and adjustment. \emph{Genetic
+Thomas, and K Yu. Genetic Background Comparison Using
+Distance-Based Regression, with Applications in Population
+Stratification Evaluation and Adjustment. \emph{Genetic
 Epidemiology}. 2009; 33(5): 432-441.
 
-J Wessel and NJ Schork. Generalized genomic
-distance-based regression methodology for multilocus association
-analysis. \emph{American Journal of Human Genetics}. 2006; 79(5):
+J Wessel and NJ Schork. Generalized Genomic
+Distance-Based Regression Methodology for Multilocus Association
+Analysis. \emph{American Journal of Human Genetics}. 2006; 79(5):
 792-806.
 
-MA Zapala and NJ Schork. Multivariate regression
-analysis of distance matrices for testing associations between
-gene expression patterns and related variables. \emph{Proceedings
+MA Zapala and NJ Schork. Multivariate Regression
+Analysis of Distance Matrices for Testing Associations Between
+Gene Expression Patterns and Related Variables. \emph{Proceedings
 of the National Academy of Sciences of the United States of
 America}. 2006; 103(51): 19430-19435.
 }

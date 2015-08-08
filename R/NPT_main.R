@@ -7,20 +7,20 @@
 ##' defined in terms of the nonparametric risk (NR). The recessive,
 ##' additive, and dominant models can be classified based on the
 ##' nonparametric risks. More specifically, the recessive, additive,
-##' and dominant models refer to NR20> NR10=1/2, NR12= NR10>1/2, and
-##' NR10= NR20>1/2, respectively, where NR10 and NR20 are the
+##' and dominant models refer to NR20 > NR10 = 1/2, NR12 = NR10>1/2, and
+##' NR10 = NR20 > 1/2, respectively, where NR10 and NR20 are the
 ##' nonparametric risks of the groups with the genotypes 1 and 2
 ##' relative to the group with the genotype 0, respectively, and NR12
 ##' is the nonparametric risk of the group with the genotype 2
 ##' relative to the group with the genotype 1.
 ##'
-##' \code{varphi} can be 0, 0.5, or 1 for the recessive, additive, or
-##' dominant model, respectively. When \code{varphi} is 0, the test is
+##' \code{varphi} can be \code{0}, \code{0.5}, or \code{1} for the recessive, additive, or
+##' dominant model, respectively. When \code{varphi} is \code{0}, the test is
 ##' constructed under the recessive model by pooling together the
 ##' subjects with the genotypes 0 and 1. Similarly, when \code{varphi}
-##' is 1, the test is constructed under the dominant model by pooling
+##' is \code{1}, the test is constructed under the dominant model by pooling
 ##' together the subjects with the genotypes 1 and 2. When
-##' \code{varphi} is 0.5, the test is based on the weighted sum of
+##' \code{varphi} is \code{0.5}, the test is based on the weighted sum of
 ##' NR10 and NR12.
 ##'
 ##' @title The nonparametric trend test based on the nonparametric
@@ -28,17 +28,27 @@
 ##' @param y a numeric vector of the observed quantitative trait
 ##' values in which the \emph{i}th element corresponds to the trait
 ##' value of the \emph{i}th subject.
-##' @param g a numeric vector of the observed genotype values (0, 1,
-##' or 2 denotes the number of risk alleles) in which the \emph{i}th
+##' @param g a numeric vector of the observed genotype values (\code{0}, \code{1},
+##' or \code{2} denotes the number of risk alleles) in which the \emph{i}th
 ##' element is the genotype value of the \emph{i}th subject for a
 ##' biallelic SNP. \code{g} has the same length as \code{y}.
 ##' @param varphi a numeric value which represents the genetic
-##' model. It should be 0, 0.5, or 1, which indicates that the
+##' model. It should be \code{0}, \code{0.5}, or \code{1}, which indicates that the
 ##' calculation is performed under the recessive, additive, or
-##' dominant model, respectively. The default is 0.5.
-##' @return A list of \code{test.stat} and
-##' \code{p.val}. \code{test.stat} is the observed value of the test
-##' statistic and \code{p.val} is the p-value of the test.
+##' dominant model, respectively. The default is \code{0.5}.
+##' @return A list with class "\code{htest}" containing the following components:
+##' \tabular{llll}{
+##' \code{statistic} \tab \tab \tab \cr
+##' \tab \tab \tab the observed value of the test statistic.\cr
+##' \code{p.value} \tab \tab \tab \cr
+##' \tab \tab \tab the p-value for the test.\cr
+##' \code{alternative} \tab \tab \tab \cr
+##' \tab \tab \tab a character string describing the alternative hypothesis.\cr
+##' \code{method} \tab \tab \tab \cr
+##' \tab \tab \tab a character string indicating the type of test performed.\cr
+##' \code{data.name} \tab \tab \tab \cr
+##' \tab \tab \tab a character string giving the names of the data.
+##' }
 ##' @author Lin Wang, Wei Zhang, and Qizhai Li.
 ##' @examples
 ##' g <- rbinom(1500, 2, 0.3)
@@ -158,5 +168,16 @@ npt <- function(y, g, varphi)
 
       }
 
-      list(test.stat=z, p.val=p.val)
+    a <- deparse(substitute(y))
+    b <- deparse(substitute(g))
+    structure( 
+    list(statistic = c(NPT = z), 
+        p.value = p.val, 
+        alternative = "the phenotype is significantly associated with the genotype", 
+        method = "Nonparametric trend test", 
+        data.name = paste(a, "and", b, sep=" ")
+        ), 
+    .Names=c("statistic", "p.value", "alternative", "method", "data.name"), 
+    class="htest"
+    )
 }

@@ -15,31 +15,41 @@
 ##' trend tests under the recessive, additive, and dominant models
 ##' @param y a numeric vector of the observed trait values in which
 ##' the \emph{i}th element is for the \emph{i}th subject. The elements
-##' should be 0 or 1.
-##' @param g a numeric vector of the observed genotype values (0, 1,
-##' or 2 denotes the number of risk alleles) in which the \emph{i}th
-##' element is for the \emph{i}th subject.  The missing value is
-##' represented by NA. \code{g} has the same length as \code{y}.
+##' should be \code{0} or \code{1}.
+##' @param g a numeric vector of the observed genotype values (\code{0}, \code{1},
+##' or \code{2} denotes the number of risk alleles) in which the \emph{i}th
+##' element is for the \emph{i}th subject. The missing value is
+##' represented by \code{NA}. \code{g} has the same length as \code{y}.
 ##' @param covariates a numeric matrix for the covariates used in the
-##' model. Each column is for one covariate. The default is NULL, that
+##' model. Each column is for one covariate. The default is \code{NULL}, that
 ##' is, there are no covariates to be adjusted for.
-##' @param Score.test logical. If TRUE, the score tests are used. One
-##' of the \code{Score.test} and the \code{Wald.test} should be FALSE,
-##' and the other should be TRUE. The default is TRUE.
-##' @param Wald.test logical. If TRUE, the Wald tests are used. One of
-##' the \code{Score.test} and the \code{Wald.test} should be FALSE,
-##' and the other should be TRUE. The default is FALSE.
-##' @param rhombus.formula logical. If TRUE, The p-value for the MAX3
-##' is approximated by the rhombus formula. IF FALSE, the 2-fold
+##' @param Score.test logical. If \code{TRUE}, the score tests are used. One
+##' of the \code{Score.test} and the \code{Wald.test} should be \code{FALSE},
+##' and the other should be \code{TRUE}. The default is \code{TRUE}.
+##' @param Wald.test logical. If \code{TRUE}, the Wald tests are used. One of
+##' the \code{Score.test} and the \code{Wald.test} should be \code{FALSE},
+##' and the other should be \code{TRUE}. The default is \code{FALSE}.
+##' @param rhombus.formula logical. If \code{TRUE}, the p-value for the MAX3
+##' is approximated by the rhombus formula. IF \code{FALSE}, the 2-fold
 ##' integration is used to calculate the p-value. The default is
-##' FALSE.
-##' @return A list of \code{test.stat} and
-##' \code{p.val}. \code{test.stat} is the observed value of the test
-##' statistic and \code{p.val} is the p-value of the test.
+##' \code{FALSE}.
+##' @return A list with class "\code{htest}" containing the following components:
+##' \tabular{llll}{
+##' \code{statistic} \tab \tab \tab \cr
+##' \tab \tab \tab the observed value of the test statistic.\cr
+##' \code{p.value} \tab \tab \tab \cr
+##' \tab \tab \tab the p-value for the test.\cr
+##' \code{alternative} \tab \tab \tab \cr
+##' \tab \tab \tab a character string describing the alternative hypothesis.\cr
+##' \code{method} \tab \tab \tab \cr
+##' \tab \tab \tab a character string indicating the type of test performed.\cr
+##' \code{data.name} \tab \tab \tab \cr
+##' \tab \tab \tab a character string giving the names of the data.
+##' }
 ##' @author Lin Wang, Wei Zhang, and Qizhai Li.
-##' @references Q Li, G Zheng, Z Li, and K Yu. Efficient approximation
-##' of p-value of the maximum of correlated tests, with applications
-##' to genome-wide association studies. \emph{Annals of Human
+##' @references Q Li, G Zheng, Z Li, and K Yu. Efficient Approximation
+##' of P Value of the Maximum of Correlated Tests, with Applications
+##' to Genome-Wide Association Studies. \emph{Annals of Human
 ##' Genetics}. 2008; 72(3): 397-406.
 ##' @examples
 ##' y <- rep(c(0, 1), 5)
@@ -51,6 +61,9 @@
 ##' @export
 max3 <- function(y, g, covariates = NULL, Score.test = TRUE, Wald.test = FALSE, rhombus.formula = FALSE)
 {
+    a <- deparse(substitute(y))
+    b <- deparse(substitute(g))
+    
     dex <- which(!is.na(g))
     g <- g[dex]
     y <- y[dex]
@@ -144,5 +157,15 @@ max3 <- function(y, g, covariates = NULL, Score.test = TRUE, Wald.test = FALSE, 
     }
 
     pv <- min(1,p.value)
-    list(test.stat=T.max, p.val=pv)
+
+    structure( 
+    list(statistic=c(MAX3 = T.max), 
+        p.value = pv, 
+        alternative = "the phenotype is significantly associated with the genotype", 
+        method = "MAX3 test", 
+        data.name = paste(a, "and", b, sep=" ")
+        ), 
+    .Names=c("statistic", "p.value", "alternative", "method", "data.name"), 
+    class="htest"
+    ) 
 }

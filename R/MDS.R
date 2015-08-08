@@ -12,7 +12,7 @@ MDS <- function(S, n, TopK, SignEigenPoint)
     if (is.null(TopK))
     {
 #        TopK <- FindTopK (Val, n, SignEigenPoint)
-        TopK <- tw(Val, n, SignEigenPoint)[[1]]
+        TopK <- tw(Val, n, SignEigenPoint)$SigntEigenL
 	      if (TopK < 1) TopK <- 1
 	      
 	      TopK <- min(TopK,10)

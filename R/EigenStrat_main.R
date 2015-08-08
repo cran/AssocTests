@@ -22,31 +22,31 @@
 ##' (default) is for the missing genotype.
 ##' @param outFile.Robj the name of an R object for saving the list of
 ##' the results which is the same as the return value of this
-##' function. The default is "out.list".
+##' function. The default is "\code{out.list}".
 ##' @param outFile.txt a txt file for saving the eigenvectors
 ##' corresponding to the top 10 significant eigenvalues.
 ##' @param rm.marker.index a numeric vector for the indices of the
-##' removed markers. The default is NULL.
+##' removed markers. The default is \code{NULL}.
 ##' @param rm.subject.index a numeric vector for the indices of the
-##' removed subjects. The default is NULL.
+##' removed subjects. The default is \code{NULL}.
 ##' @param miss.val the number representing the missing data in the
-##' input data. The default is 9. The element 9 for the missing data
+##' input data. The default is \code{9}. The element 9 for the missing data
 ##' in the \code{genoFile} should be changed according to the value of
 ##' \code{miss.val}.
 ##' @param num.splits the number of groups into which the markers are
-##' split. The default is 10.
-##' @param topK the number of eigenvectors to return. If NULL, it is
-##' calculated by the Tracy-Wisdom test. The default is NULL.
+##' split. The default is \code{10}.
+##' @param topK the number of eigenvectors to return. If \code{NULL}, it is
+##' calculated by the Tracy-Wisdom test. The default is \code{NULL}.
 ##' @param signt.eigen.level a numeric value which is the significance
-##' level of the Tracy-Wisdom test. It should be 0.05, 0.01, 0.005, or
-##' 0.001. The default is 0.01.
-##' @param signal.outlier logical. If TRUE, delete the outliers of the
+##' level of the Tracy-Wisdom test. It should be \code{0.05}, \code{0.01}, \code{0.005}, or
+##' \code{0.001}. The default is \code{0.01}.
+##' @param signal.outlier logical. If \code{TRUE}, delete the outliers of the
 ##' subjects; otherwise, do not search for the outliers. The default
-##' is FALSE.
+##' is \code{FALSE}.
 ##' @param iter.outlier a numeric value that is the iteration time for
-##' finding the outliers of the subjects. The default is 5.
+##' finding the outliers of the subjects. The default is \code{5}.
 ##' @param sigma.thresh a numeric value that is the lower limit for
-##' eliminating the outliers. The default is 6.
+##' eliminating the outliers. The default is \code{6}.
 ##' @return \code{eigenstrat} returns a list, which contains the following components:
 ##' \tabular{llll}{
 ##' \code{num.markers} \tab \tab \tab the number of the markers excluding the removed markers.\cr
@@ -72,14 +72,14 @@
 ##' }
 ##' @author Lin Wang, Wei Zhang, and Qizhai Li.
 ##' @references AL Price, NJ Patterson, RM Plenge, ME Weinblatt, NA
-##' Shadick, and D Reich. Principal components analysis corrects for
-##' stratification in genome-wide association studies. \emph{Nature
+##' Shadick, and D Reich. Principal Components Analysis Corrects for
+##' Stratification in Genome-Wide Association Studies. \emph{Nature
 ##' Genetics}. 2006; 38(8): 904-909.
 ##' @references N Patterson, AL Price, and D Reich. Population
-##' structure and eigenanalysis. \emph{PloS Genetics}. 2006; 2(12):
+##' Structure and Eigenanalysis. \emph{PloS Genetics}. 2006; 2(12):
 ##' 2074-2093.
-##' @references CA Tracy and H Widom. Level-spacing distributions and
-##' the Airy kernel. \emph{Communications in Mathematical
+##' @references CA Tracy and H Widom. Level-Spacing Distributions and
+##' the Airy Kernel. \emph{Communications in Mathematical
 ##' Physics}. 1994; 159(1): 151-174.
 ##' @examples
 ##' eigenstratG.eg <- matrix(rbinom(3000, 2, 0.5), ncol = 30)
@@ -216,8 +216,8 @@ eigenstrat <- function(genoFile = "eigenstratG.eg.txt", outFile.Robj = "out.list
 	      {
 	          a <- n - 1
 	          wet <- tw(eVal[1:a], a, SignEigenPoint)
-	          topK <- wet[[1]]
-	          TW.stat <- wet[[2]]
+	          topK <- wet$SigntEigenL
+	          TW.stat <- wet$statistic
 	          if (topK==0)
             {
                 topK <- 2
@@ -227,7 +227,7 @@ eigenstrat <- function(genoFile = "eigenstratG.eg.txt", outFile.Robj = "out.list
 	      {
 	          a <- n - 1
 	          wet <- tw(eVal[1:a], a, SignEigenPoint)
-	          TW.stat <- wet[[2]]
+	          TW.stat <- wet$statistic
         }
 
         # stop the iteration

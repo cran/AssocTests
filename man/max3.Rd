@@ -11,34 +11,44 @@ max3(y, g, covariates = NULL, Score.test = TRUE, Wald.test = FALSE,
 \arguments{
 \item{y}{a numeric vector of the observed trait values in which
 the \emph{i}th element is for the \emph{i}th subject. The elements
-should be 0 or 1.}
+should be \code{0} or \code{1}.}
 
-\item{g}{a numeric vector of the observed genotype values (0, 1,
-or 2 denotes the number of risk alleles) in which the \emph{i}th
-element is for the \emph{i}th subject.  The missing value is
-represented by NA. \code{g} has the same length as \code{y}.}
+\item{g}{a numeric vector of the observed genotype values (\code{0}, \code{1},
+or \code{2} denotes the number of risk alleles) in which the \emph{i}th
+element is for the \emph{i}th subject. The missing value is
+represented by \code{NA}. \code{g} has the same length as \code{y}.}
 
 \item{covariates}{a numeric matrix for the covariates used in the
-model. Each column is for one covariate. The default is NULL, that
+model. Each column is for one covariate. The default is \code{NULL}, that
 is, there are no covariates to be adjusted for.}
 
-\item{Score.test}{logical. If TRUE, the score tests are used. One
-of the \code{Score.test} and the \code{Wald.test} should be FALSE,
-and the other should be TRUE. The default is TRUE.}
+\item{Score.test}{logical. If \code{TRUE}, the score tests are used. One
+of the \code{Score.test} and the \code{Wald.test} should be \code{FALSE},
+and the other should be \code{TRUE}. The default is \code{TRUE}.}
 
-\item{Wald.test}{logical. If TRUE, the Wald tests are used. One of
-the \code{Score.test} and the \code{Wald.test} should be FALSE,
-and the other should be TRUE. The default is FALSE.}
+\item{Wald.test}{logical. If \code{TRUE}, the Wald tests are used. One of
+the \code{Score.test} and the \code{Wald.test} should be \code{FALSE},
+and the other should be \code{TRUE}. The default is \code{FALSE}.}
 
-\item{rhombus.formula}{logical. If TRUE, The p-value for the MAX3
-is approximated by the rhombus formula. IF FALSE, the 2-fold
+\item{rhombus.formula}{logical. If \code{TRUE}, the p-value for the MAX3
+is approximated by the rhombus formula. IF \code{FALSE}, the 2-fold
 integration is used to calculate the p-value. The default is
-FALSE.}
+\code{FALSE}.}
 }
 \value{
-A list of \code{test.stat} and
-\code{p.val}. \code{test.stat} is the observed value of the test
-statistic and \code{p.val} is the p-value of the test.
+A list with class "\code{htest}" containing the following components:
+\tabular{llll}{
+\code{statistic} \tab \tab \tab \cr
+\tab \tab \tab the observed value of the test statistic.\cr
+\code{p.value} \tab \tab \tab \cr
+\tab \tab \tab the p-value for the test.\cr
+\code{alternative} \tab \tab \tab \cr
+\tab \tab \tab a character string describing the alternative hypothesis.\cr
+\code{method} \tab \tab \tab \cr
+\tab \tab \tab a character string indicating the type of test performed.\cr
+\code{data.name} \tab \tab \tab \cr
+\tab \tab \tab a character string giving the names of the data.
+}
 }
 \description{
 Conduct MAX3 (the maximal value of the three Cochran-Armitage
@@ -68,9 +78,9 @@ max3(y, g, covariates = matrix(sample(c(0,1), 20, replace = TRUE), ncol=2),
 Lin Wang, Wei Zhang, and Qizhai Li.
 }
 \references{
-Q Li, G Zheng, Z Li, and K Yu. Efficient approximation
-of p-value of the maximum of correlated tests, with applications
-to genome-wide association studies. \emph{Annals of Human
+Q Li, G Zheng, Z Li, and K Yu. Efficient Approximation
+of P Value of the Maximum of Correlated Tests, with Applications
+to Genome-Wide Association Studies. \emph{Annals of Human
 Genetics}. 2008; 72(3): 397-406.
 }
 

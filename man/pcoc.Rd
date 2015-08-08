@@ -18,13 +18,13 @@ subject. 0, 1, and 2 denote the number of risk alleles, and 9
 function.}
 
 \item{n.MonterCarlo}{the number of times for the Monter Carlo
-procedure. The default is 1000.}
+procedure. The default is \code{1000}.}
 
 \item{num.splits}{the number of groups into which the markers are
-split. The default is 10.}
+split. The default is \code{10}.}
 
 \item{miss.val}{the number representing the missing data in the
-input data. The default is 9. The element 9 for the missing data
+input data. The default is \code{9}. The element 9 for the missing data
 in the \code{genoFile} should be changed according to the value of
 \code{miss.val}.}
 }
@@ -61,12 +61,12 @@ pcoc(genoFile = "pcocG.eg.txt", outFile.txt = "pcoc.result.txt",
 Lin Wang, Wei Zhang, and Qizhai Li.
 }
 \references{
-Q Li and K Yu. Improved correction for population
-stratification in genome-wide association studies by identifying
-hidden population structures. \emph{Genetic Epidemiology}. 2008;
+Q Li and K Yu. Improved Correction for Population
+Stratification in Genome-Wide Association Studies by Identifying
+Hidden Population Structures. \emph{Genetic Epidemiology}. 2008;
 32(3): 215-226.
 
 KV Mardia, JT Kent, and JM Bibby. Multivariate
-analysis. \emph{New York: Academic Press}. 1976.
+Analysis. \emph{New York: Academic Press}. 1976.
 }
 

@@ -1,8 +1,8 @@
 Package: AssocTests
 Type: Package
 Title: Genetic Association Studies
-Version: 0.0-2
-Date: 2015-06-21
+Version: 0.0-3
+Date: 2015-08-08
 Author: Lin Wang [aut], 
 	Wei Zhang [aut], 
 	Qizhai Li [aut], 
@@ -41,6 +41,6 @@ Collate: 'AssociationTestWithCorrectPS.R' 'CalculateGapK.R'
         'SMT_main.R' 'Str2Num.R' 'TrendTest.R' 'TW_main.R'
         'UniformSample.R' 'UniformTest.R' 'WaldTest.R'
 NeedsCompilation: no
-Packaged: 2015-06-24 02:56:00 UTC; Administrator
+Packaged: 2015-08-08 10:43:17 UTC; Administrator
 Repository: CRAN
-Date/Publication: 2015-06-26 14:00:29
+Date/Publication: 2015-08-08 15:39:20

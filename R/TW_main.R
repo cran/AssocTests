@@ -7,24 +7,34 @@
 ##' @param eigenL the number of the eigenvalues.
 ##' @param criticalpoint a numeric value corresponding to the
 ##' significance level. If the significance level is 0.05, 0.01,
-##' 0.005, or 0.001, the critical point should be set to be 0.9793,
-##' 2.0234, 2.4224, or 3.2724, accordingly. The default is 2.0234.
-##' @return A list of \code{SigntEigenL} and
-##' \code{TW.stat}. \code{SigntEigenL} is the number of the
-##' significant eigenvalues and \code{TW.stat} is a vector of the
-##' Tracy-Wisdom statistics.
+##' 0.005, or 0.001, the critical point should be set to be \code{0.9793},
+##' \code{2.0234}, \code{2.4224}, or \code{3.2724}, accordingly. The default is \code{2.0234}.
+##' @return A list with class "\code{htest}" containing the following components:
+##' \tabular{llll}{
+##' \code{statistic} \tab \tab \tab \cr
+##' \tab \tab \tab a vector of the Tracy-Wisdom statistics.\cr
+##' \code{alternative} \tab \tab \tab \cr
+##' \tab \tab \tab a character string describing the alternative hypothesis.\cr
+##' \code{method} \tab \tab \tab \cr
+##' \tab \tab \tab a character string indicating the type of test performed.\cr
+##' \code{data.name} \tab \tab \tab \cr
+##' \tab \tab \tab a character string giving the name of the data. \cr
+##' \code{SigntEigenL} \tab \tab \tab \cr
+##' \tab \tab \tab the number of the significant eigenvalues.
+##' }
 ##' @author Lin Wang, Wei Zhang, and Qizhai Li.
 ##' @references N Patterson, AL Price, and D Reich. Population
-##' structure and eigenanalysis. \emph{PloS Genetics}. 2006; 2(12):
+##' Structure and Eigenanalysis. \emph{PloS Genetics}. 2006; 2(12):
 ##' 2074-2093.
-##' @references CA Tracy and H Widom. Level-spacing distributions and
-##' the Airy kernel. \emph{Communications in Mathematical
+##' @references CA Tracy and H Widom. Level-Spacing Distributions and
+##' the Airy Kernel. \emph{Communications in Mathematical
 ##' Physics}. 1994; 159(1): 151-174.
 ##' @examples
 ##' tw(eigenvalues = c(5, 3, 1, 0), eigenL = 4, criticalpoint = 2.0234)
 ##' @export
 tw <- function(eigenvalues, eigenL, criticalpoint=2.0234)
 {
+    a <- deparse(substitute(eigenvalues))
     dex <- which(eigenvalues <= 1e-8)
     eigenvalues[dex] <- 1e-8
 
@@ -58,7 +68,14 @@ tw <- function(eigenvalues, eigenL, criticalpoint=2.0234)
         d <- d-1
     }
 
-    res <- list(SigntEigenL=d, TW.stat=twstat)
-
-    return(res)
+    structure( 
+    list(statistic = c(TW = twstat), 
+        alternative = "the eigenvalue is significant", 
+        method = "Tracy-Wisdom test", 
+        data.name = a,
+        SigntEigenL = d
+        ), 
+    .Names=c("statistic", "alternative", "method", "data.name", "SigntEigenL"), 
+    class="htest"
+    )
 }

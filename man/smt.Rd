@@ -10,21 +10,21 @@ smt(y, g, covariates = NULL, min.count = 5, missing.rate = 0.2,
 \arguments{
 \item{y}{a numeric vector of the observed trait values in which
 the \emph{i}th element is for the \emph{i}th subject. The elements
-could be discrete (0 or 1) or continuous. The missing value is
-represented by NA.}
+could be discrete (\code{0} or \code{1}) or continuous. The missing value is
+represented by \code{NA}.}
 
-\item{g}{a numeric vector of the observed genotype values (0, 1,
-or 2 denotes the number of risk alleles) in which the \emph{i}th
-element is for the \emph{i}th subject.  The missing value is
-represented by NA. \code{g} has the same length as \code{y}.}
+\item{g}{a numeric vector of the observed genotype values (\code{0}, \code{1},
+or \code{2} denotes the number of risk alleles) in which the \emph{i}th
+element is for the \emph{i}th subject. The missing value is
+represented by \code{NA}. \code{g} has the same length as \code{y}.}
 
 \item{covariates}{an optional data frame, list or environment
-containing the covariates used in the model. The default is NULL,
+containing the covariates used in the model. The default is \code{NULL},
 that is, there are no covariates.}
 
 \item{min.count}{a critical value to decide which method is used
-to calculate the p-value when the trait is discrete and covariates
-= NULL. If the minimum number of the elements given a specific
+to calculate the p-value when the trait is discrete and \code{covariates
+= NULL}. If the minimum number of the elements given a specific
 trait value and a specific genotype value is less than
 \code{min.count}, the Fisher exact test is adopted; otherwise, the
 Wald test is adopted.}
@@ -32,31 +32,43 @@ Wald test is adopted.}
 \item{missing.rate}{the highest missing rate of the genotype
 values that this function can tolerate.}
 
-\item{y.continuous}{logical. If TRUE, \code{y} is continuous;
+\item{y.continuous}{logical. If \code{TRUE}, \code{y} is continuous;
 otherwise, \code{y} is discrete.}
 }
 \value{
-\code{smt} returns a list.
+\code{smt} returns a list with class "\code{htest}".
 
 If y is continuous, the list contains the following components:
 \tabular{llll}{
-n0 \tab \tab \tab the number of the subjects used for the calculation with the genotype 0.\cr
-n1 \tab \tab \tab the number of the subjects used for the calculation with the genotype 1.\cr
-n2 \tab \tab \tab the number of the subjects used for the calculation with the genotype 2.\cr
-p.val \tab \tab \tab the p-value of the single-marker test.
+\code{statistic} \tab \tab \tab \cr
+\tab \tab \tab the observed value of the test statistic.\cr
+\code{p.value} \tab \tab \tab \cr
+\tab \tab \tab the p-value for the test.\cr
+\code{alternative} \tab \tab \tab \cr
+\tab \tab \tab a character string describing the alternative hypothesis.\cr
+\code{method} \tab \tab \tab \cr
+\tab \tab \tab a character string indicating the type of test performed.\cr
+\code{data.name} \tab \tab \tab \cr
+\tab \tab \tab a character string giving the names of the data. \cr
+\code{sample.size} \tab \tab \tab \cr
+\tab \tab \tab a vector giving the numbers of the subjects with the genotypes \code{0}, \code{1}, and \code{2} (\code{n0}, \code{n1}, and \code{n2}, respectively).
 }
 If y is discrete, the list contains the following components:
 \tabular{llll}{
-r0 \tab \tab \tab the number of the subjects used for the calculation with the trait value 1 and the genotype 0.\cr
-r1 \tab \tab \tab the number of the subjects used for the calculation with the trait value 1 and the genotype 1.\cr
-r2 \tab \tab \tab the number of the subjects used for the calculation with the trait value 1 and the genotype 2.\cr
-r.miss \tab \tab \tab the number of the missing genotype values with the trait value 1.\cr
-s0 \tab \tab \tab the number of the subjects used for the calculation with the trait value 0 and the genotype 0.\cr
-s1 \tab \tab \tab the number of the subjects used for the calculation with the trait value 0 and the genotype 1.\cr
-s2 \tab \tab \tab the number of the subjects used for the calculation with the trait value 0 and the genotype 2.\cr
-s.miss \tab \tab \tab the number of the missing genotype values with the trait value 0.\cr
-n.miss \tab \tab \tab the total number of the missing genotype values. \cr
-p.val \tab \tab \tab the p-value of the single-marker test.
+\code{statistic} \tab \tab \tab \cr
+\tab \tab \tab the observed value of the test statistic.\cr
+\code{p.value} \tab \tab \tab \cr
+\tab \tab \tab the p-value for the test.\cr
+\code{alternative} \tab \tab \tab \cr
+\tab \tab \tab a character string describing the alternative hypothesis.\cr
+\code{method} \tab \tab \tab \cr
+\tab \tab \tab a character string indicating the type of test performed.\cr
+\code{data.name} \tab \tab \tab \cr
+\tab \tab \tab a character string giving the names of the data. \cr
+\code{sample.size} \tab \tab \tab \cr
+\tab \tab \tab a vector giving the number of the subjects with the trait value \code{1} and the genotype \code{0} (\code{r0}), the number of the subjects with the trait value \code{1} and the genotype \code{1} (\code{r1}), the number of the subjects with the trait value \code{1} and the genotype \code{2} (\code{r2}), the number of the subjects with the trait value \code{0} and the genotype \code{0} (\code{s0}), the number of the subjects with the trait value \code{0} and the genotype \code{1} (\code{s1}), and the number of the subjects with the trait value \code{0} and the genotype \code{2} (\code{s2}).\cr
+\code{bad.obs} \tab \tab \tab \cr
+\tab \tab \tab a vector giving the number of the missing genotype values with the trait value \code{1} (\code{r.miss}), the number of the missing genotype values with the trait value \code{0} (\code{s.miss}), and the total number of the missing genotype values (\code{n.miss}).
 }
 }
 \description{
