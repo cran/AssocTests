@@ -1,10 +1,10 @@
 ## Gap Statistics
-CalculateGapK <- function(W, WStar, kG, n.monterCarlo)
+CalculateGapK <- function(W, WStar, kG, n.monteCarlo)
 {
     WLog <- log(W)
     WStarLog <- log(WStar)
     Gap <- apply(WStarLog, 2, mean) - WLog
-    s <- apply( WStarLog,2,sd) * sqrt( (n.monterCarlo-1)/n.monterCarlo ) * sqrt(1+1/n.monterCarlo)
+    s <- apply( WStarLog,2,sd) * sqrt( (n.monteCarlo-1)/n.monteCarlo ) * sqrt(1+1/n.monteCarlo)
 
     I <- 2;
     gap_kHat <- 1

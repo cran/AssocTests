@@ -17,8 +17,8 @@
 ##' subject. 0, 1, and 2 denote the number of risk alleles, and 9
 ##' (default) is for the missing genotype.
 ##' @param outFile.txt a txt file for saving the result of this
-##' function.
-##' @param n.MonterCarlo the number of times for the Monter Carlo
+##' function. The default is "\code{pcoc.result.txt}".
+##' @param n.MonteCarlo the number of times for the Monte Carlo
 ##' procedure. The default is \code{1000}.
 ##' @param num.splits the number of groups into which the markers are
 ##' split. The default is \code{10}.
@@ -29,7 +29,7 @@
 ##' @return A list of \code{principal.coordinates} and
 ##' \code{cluster}. \code{principal.coordinates} is the principal
 ##' coordinates and \code{cluster} is the clustering of the
-##' subjects. If the number of the clusters is only one,
+##' subjects. If the number of clusters is only one,
 ##' \code{cluster} is omitted.
 ##' @author Lin Wang, Wei Zhang, and Qizhai Li.
 ##' @references Q Li and K Yu. Improved Correction for Population
@@ -43,9 +43,9 @@
 ##' write.table(pcocG.eg, file = "pcocG.eg.txt", quote = FALSE,
 ##'        sep = "", row.names = FALSE, col.names = FALSE)
 ##' pcoc(genoFile = "pcocG.eg.txt", outFile.txt = "pcoc.result.txt",
-##'        n.MonterCarlo = 50, num.splits = 10, miss.val = 9)
+##'        n.MonteCarlo = 50, num.splits = 10, miss.val = 9)
 ##' @export
-pcoc <- function(genoFile="pcocG.eg.txt", outFile.txt="pcoc.result.txt", n.MonterCarlo = 1000, num.splits=10, miss.val=9)
+pcoc <- function(genoFile, outFile.txt="pcoc.result.txt", n.MonteCarlo = 1000, num.splits=10, miss.val=9)
 {
     ## read genotype file
     xStr <- readLines(con=genoFile)
@@ -83,7 +83,7 @@ pcoc <- function(genoFile="pcocG.eg.txt", outFile.txt="pcoc.result.txt", n.Monte
     S <- S/num.marker
 
     X <- MDS(S, num.subject, TopK=NULL, SignEigenPoint=2.0234)
-    k <- FindCNumRandom(X, num.subject, kG=10, n.MonterCarlo)
+    k <- FindCNumRandom(X, num.subject, kG=10, n.MonteCarlo)
 
     if (k>1)
     {

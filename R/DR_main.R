@@ -10,13 +10,13 @@
 ##' @title Distance regression
 ##' @param simi.mat a similarity matrix among the subjects.
 ##' @param null.space a numeric vector to show the column numbers of
-##' the null space in the \code{x.mat}.
+##' the null space in \code{x.mat}.
 ##' @param x.mat the covariate matrix which combines the null space
 ##' and the matrix of interest.
-##' @param permute logical. If \code{TRUE}, the Monter Carlo sampling is used
+##' @param permute logical. If \code{TRUE}, the Monte Carlo sampling is used
 ##' without replacement; otherwise, with replacement. The default is
 ##' \code{TRUE}.
-##' @param n.MonterCarlo the number of times for the Monter Carlo
+##' @param n.MonteCarlo the number of times for the Monte Carlo
 ##' procedure. The default is \code{1000}.
 ##' @param seed if it is not \code{NULL}, set the random number generator
 ##' state for random number generation. The default is \code{NULL}.
@@ -52,9 +52,9 @@
 ##' data(drS.eg)
 ##' null.space <- 1
 ##' x.mat <- matrix(c(rep(1, 600), rep(0, 200)), ncol=2)
-##' dr(drS.eg, null.space, x.mat, permute = TRUE, n.MonterCarlo = 50, seed = NULL)
+##' dr(drS.eg, null.space, x.mat, permute = TRUE, n.MonteCarlo = 50, seed = NULL)
 ##' @export
-dr <- function(simi.mat, null.space, x.mat, permute=TRUE, n.MonterCarlo=1000, seed=NULL)
+dr <- function(simi.mat, null.space, x.mat, permute=TRUE, n.MonteCarlo=1000, seed=NULL)
 {
     if (!is.null(seed))
     {
@@ -90,9 +90,9 @@ dr <- function(simi.mat, null.space, x.mat, permute=TRUE, n.MonterCarlo=1000, se
 
     U <- 1:n
 
-    F.star <- rep(NA, n.MonterCarlo)
+    F.star <- rep(NA, n.MonteCarlo)
 
-    for (i in 1:n.MonterCarlo)
+    for (i in 1:n.MonteCarlo)
     {
         id.sam <- sample(U, replace=!permute)
 
@@ -101,7 +101,7 @@ dr <- function(simi.mat, null.space, x.mat, permute=TRUE, n.MonterCarlo=1000, se
 	      F.star[i] <- sum(alter.hat*Q.star) / sum(i.x*Q.star)
     }
 
-    pv <- sum(F.star >= F.obs)/n.MonterCarlo
+    pv <- sum(F.star >= F.obs)/n.MonteCarlo
 
     a <- deparse(substitute(simi.mat))
     b <- deparse(substitute(x.mat))

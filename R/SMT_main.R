@@ -21,12 +21,12 @@
 ##' to calculate the p-value when the trait is discrete and \code{covariates
 ##' = NULL}. If the minimum number of the elements given a specific
 ##' trait value and a specific genotype value is less than
-##' \code{min.count}, the Fisher exact test is adopted; otherwise, the
-##' Wald test is adopted.
-##' @param missing.rate the highest missing rate of the genotype
-##' values that this function can tolerate.
+##' \code{min.count}, the Fisher's exact test is adopted; otherwise, the
+##' Wald test is adopted. The default is \code{5}.
+##' @param missing.rate the highest missing value rate of the genotype
+##' values that this function can tolerate. The default is \code{0.2}.
 ##' @param y.continuous logical. If \code{TRUE}, \code{y} is continuous;
-##' otherwise, \code{y} is discrete.
+##' otherwise, \code{y} is discrete. The default is \code{FALSE}.
 ##' @return \code{smt} returns a list with class "\code{htest}".
 ##'
 ##' If y is continuous, the list contains the following components:
@@ -42,7 +42,8 @@
 ##' \code{data.name} \tab \tab \tab \cr
 ##' \tab \tab \tab a character string giving the names of the data. \cr
 ##' \code{sample.size} \tab \tab \tab \cr
-##' \tab \tab \tab a vector giving the numbers of the subjects with the genotypes \code{0}, \code{1}, and \code{2} (\code{n0}, \code{n1}, and \code{n2}, respectively).
+##' \tab \tab \tab a vector giving the numbers of the subjects with the genotypes \code{0}, \code{1}, and \code{2} (\code{n0}, \cr
+##' \tab \tab \tab \code{n1}, and \code{n2}, respectively).
 ##' }
 ##' If y is discrete, the list contains the following components:
 ##' \tabular{llll}{
@@ -57,9 +58,17 @@
 ##' \code{data.name} \tab \tab \tab \cr
 ##' \tab \tab \tab a character string giving the names of the data. \cr
 ##' \code{sample.size} \tab \tab \tab \cr
-##' \tab \tab \tab a vector giving the number of the subjects with the trait value \code{1} and the genotype \code{0} (\code{r0}), the number of the subjects with the trait value \code{1} and the genotype \code{1} (\code{r1}), the number of the subjects with the trait value \code{1} and the genotype \code{2} (\code{r2}), the number of the subjects with the trait value \code{0} and the genotype \code{0} (\code{s0}), the number of the subjects with the trait value \code{0} and the genotype \code{1} (\code{s1}), and the number of the subjects with the trait value \code{0} and the genotype \code{2} (\code{s2}).\cr
+##' \tab \tab \tab a vector giving \cr
+##' \tab \tab \tab the number of subjects with the trait value \code{1} and the genotype \code{0} (\code{r0}), \cr
+##' \tab \tab \tab the number of subjects with the trait value \code{1} and the genotype \code{1} (\code{r1}), \cr
+##' \tab \tab \tab the number of subjects with the trait value \code{1} and the genotype \code{2} (\code{r2}), \cr
+##' \tab \tab \tab the number of subjects with the trait value \code{0} and the genotype \code{0} (\code{s0}), \cr
+##' \tab \tab \tab the number of subjects with the trait value \code{0} and the genotype \code{1} (\code{s1}), \cr
+##' \tab \tab \tab and the number of subjects with the trait value \code{0} and the genotype \code{2} (\code{s2}).\cr
 ##' \code{bad.obs} \tab \tab \tab \cr
-##' \tab \tab \tab a vector giving the number of the missing genotype values with the trait value \code{1} (\code{r.miss}), the number of the missing genotype values with the trait value \code{0} (\code{s.miss}), and the total number of the missing genotype values (\code{n.miss}).
+##' \tab \tab \tab a vector giving the number of missing genotype values with the trait value \code{1} \cr
+##' \tab \tab \tab (\code{r.miss}), the number of missing genotype values with the trait value \code{0} \cr
+##' \tab \tab \tab (\code{s.miss}), and the total number of the missing genotype values (\code{n.miss}).
 ##' }
 ##' @author Lin Wang, Wei Zhang, and Qizhai Li.
 ##' @examples

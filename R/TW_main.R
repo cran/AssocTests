@@ -1,18 +1,18 @@
 ##' Find the significant eigenvalues of a matrix.
 ##'
-##' @title Tracy-Wisdom test
+##' @title Tracy-Widom test
 ##' @param eigenvalues a numeric vector whose elements are the
 ##' eigenvalues of a matrix. The values should be sorted in the
 ##' descending order.
-##' @param eigenL the number of the eigenvalues.
+##' @param eigenL the number of eigenvalues.
 ##' @param criticalpoint a numeric value corresponding to the
 ##' significance level. If the significance level is 0.05, 0.01,
-##' 0.005, or 0.001, the critical point should be set to be \code{0.9793},
+##' 0.005, or 0.001, the \code{criticalpoint} should be set to be \code{0.9793},
 ##' \code{2.0234}, \code{2.4224}, or \code{3.2724}, accordingly. The default is \code{2.0234}.
 ##' @return A list with class "\code{htest}" containing the following components:
 ##' \tabular{llll}{
 ##' \code{statistic} \tab \tab \tab \cr
-##' \tab \tab \tab a vector of the Tracy-Wisdom statistics.\cr
+##' \tab \tab \tab a vector of the Tracy-Widom statistics.\cr
 ##' \code{alternative} \tab \tab \tab \cr
 ##' \tab \tab \tab a character string describing the alternative hypothesis.\cr
 ##' \code{method} \tab \tab \tab \cr
@@ -20,7 +20,7 @@
 ##' \code{data.name} \tab \tab \tab \cr
 ##' \tab \tab \tab a character string giving the name of the data. \cr
 ##' \code{SigntEigenL} \tab \tab \tab \cr
-##' \tab \tab \tab the number of the significant eigenvalues.
+##' \tab \tab \tab the number of significant eigenvalues.
 ##' }
 ##' @author Lin Wang, Wei Zhang, and Qizhai Li.
 ##' @references N Patterson, AL Price, and D Reich. Population
@@ -29,6 +29,10 @@
 ##' @references CA Tracy and H Widom. Level-Spacing Distributions and
 ##' the Airy Kernel. \emph{Communications in Mathematical
 ##' Physics}. 1994; 159(1): 151-174.
+##' @references A Bejan. Tracy-Widom and Painleve II: Computational
+##' Aspects and Realisation in S-Plus. In \emph{First Workshop of the ERCIM
+##' Working Group on Computing and Statistics}. 2008, Neuchatel, Switzerland.
+##' @references \url{www.vitrum.md/andrew/MScWrwck/codes.txt}
 ##' @examples
 ##' tw(eigenvalues = c(5, 3, 1, 0), eigenL = 4, criticalpoint = 2.0234)
 ##' @export
@@ -71,7 +75,7 @@ tw <- function(eigenvalues, eigenL, criticalpoint=2.0234)
     structure( 
     list(statistic = c(TW = twstat), 
         alternative = "the eigenvalue is significant", 
-        method = "Tracy-Wisdom test", 
+        method = "Tracy-Widom test",
         data.name = a,
         SigntEigenL = d
         ), 

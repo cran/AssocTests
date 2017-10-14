@@ -17,8 +17,8 @@
 ##' based on the nonparametric trend test. However, the MAX3 is based
 ##' on the Cochran-Armitage trend test.
 ##'
-##' @title The NMAX3 based on the nonparametric trend test in a
-##' quantitative trait association study
+##' @title NMAX3 based on the maximum value of the three nonparametric trend tests
+##' under the recessive, additive, and dominant models
 ##' @param y a numeric vector of the observed quantitative trait
 ##' values in which the \emph{i}th element is the trait value of the
 ##' \emph{i}th subject.

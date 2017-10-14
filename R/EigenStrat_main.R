@@ -10,7 +10,7 @@
 ##' the form of a \emph{m*n} matrix, in which the element in the
 ##' \emph{i}th row and the \emph{j}th column represents the genotype
 ##' of the \emph{j}th subject at the \emph{i}th marker. This function
-##' calculates the top ten eigenvectors or the eigenvectors with
+##' calculates the top eigenvectors or the eigenvectors with
 ##' significant eigenvalues of the similarity matrix among the
 ##' subjects to infer the potential population structure. See also
 ##' \link{tw}.
@@ -24,7 +24,7 @@
 ##' the results which is the same as the return value of this
 ##' function. The default is "\code{out.list}".
 ##' @param outFile.txt a txt file for saving the eigenvectors
-##' corresponding to the top 10 significant eigenvalues.
+##' corresponding to the top significant eigenvalues.
 ##' @param rm.marker.index a numeric vector for the indices of the
 ##' removed markers. The default is \code{NULL}.
 ##' @param rm.subject.index a numeric vector for the indices of the
@@ -36,9 +36,9 @@
 ##' @param num.splits the number of groups into which the markers are
 ##' split. The default is \code{10}.
 ##' @param topK the number of eigenvectors to return. If \code{NULL}, it is
-##' calculated by the Tracy-Wisdom test. The default is \code{NULL}.
+##' calculated by the Tracy-Widom test. The default is \code{NULL}.
 ##' @param signt.eigen.level a numeric value which is the significance
-##' level of the Tracy-Wisdom test. It should be \code{0.05}, \code{0.01}, \code{0.005}, or
+##' level of the Tracy-Widom test. It should be \code{0.05}, \code{0.01}, \code{0.005}, or
 ##' \code{0.001}. The default is \code{0.01}.
 ##' @param signal.outlier logical. If \code{TRUE}, delete the outliers of the
 ##' subjects; otherwise, do not search for the outliers. The default
@@ -49,25 +49,25 @@
 ##' eliminating the outliers. The default is \code{6}.
 ##' @return \code{eigenstrat} returns a list, which contains the following components:
 ##' \tabular{llll}{
-##' \code{num.markers} \tab \tab \tab the number of the markers excluding the removed markers.\cr
-##' \code{num.subjects} \tab \tab \tab the number of the subjects excluding the outliers.\cr
+##' \code{num.markers} \tab \tab \tab the number of markers excluding the removed markers.\cr
+##' \code{num.subjects} \tab \tab \tab the number of subjects excluding the outliers.\cr
 ##' \code{rm.marker.index} \tab \tab \tab the indices of the removed markers.\cr
 ##' \code{rm.subject.index} \tab \tab \tab the indices of the removed subjects.\cr
-##' \code{TW.level} \tab \tab \tab the significance level of the Tracy-Wisdom test.\cr
+##' \code{TW.level} \tab \tab \tab the significance level of the Tracy-Widom test.\cr
 ##' \code{signal.outlier} \tab \tab \tab dealing with the outliers in the subjects or not.\cr
 ##' \code{iter.outlier} \tab \tab \tab the iteration time for finding the outliers.\cr
 ##' \code{sigma.thresh} \tab \tab \tab the lower limit for eliminating the outliers.\cr
-##' \code{num.outliers} \tab \tab \tab the number of the outliers.\cr
+##' \code{num.outliers} \tab \tab \tab the number of outliers.\cr
 ##' \code{outliers.index} \tab \tab \tab the indices of the outliers.\cr
 ##' \code{num.used.subjects} \tab \tab \tab the number of the used subjects.\cr
 ##' \code{used.subjects.index} \tab \tab \tab the indices of the used subjects.\cr
 ##' \code{similarity.matrix} \tab \tab \tab the similarity matrix among the subjects.\cr
 ##' \code{eigenvalues} \tab \tab \tab the eigenvalues of the similarity matrix.\cr
 ##' \code{eigenvectors} \tab \tab \tab the eigenvectors corresponding to the eigenvalues.\cr
-##' \code{topK} \tab \tab \tab the number of the significant eigenvalues.\cr
-##' \code{TW.stat} \tab \tab \tab the observed values of the Tracy-Wisdom statistics.\cr
-##' \code{topK.eigenvalues} \tab \tab \tab the significant eigenvalues.\cr
-##' \code{topK.eigenvectors} \tab \tab \tab the eigenvectors corresponding to the significant eigenvalues.\cr
+##' \code{topK} \tab \tab \tab the number of significant eigenvalues.\cr
+##' \code{TW.stat} \tab \tab \tab the observed values of the Tracy-Widom statistics.\cr
+##' \code{topK.eigenvalues} \tab \tab \tab the top eigenvalues.\cr
+##' \code{topK.eigenvectors} \tab \tab \tab the eigenvectors corresponding to the top eigenvalues.\cr
 ##' \code{runtime} \tab \tab \tab the running time of this function.
 ##' }
 ##' @author Lin Wang, Wei Zhang, and Qizhai Li.
@@ -91,7 +91,7 @@
 ##'              topK = NULL, signt.eigen.level = 0.01, signal.outlier = FALSE,
 ##'              iter.outlier = 5, sigma.thresh = 6)
 ##' @export
-eigenstrat <- function(genoFile = "eigenstratG.eg.txt", outFile.Robj = "out.list", outFile.txt = "out.txt", rm.marker.index = NULL, rm.subject.index = NULL,
+eigenstrat <- function(genoFile, outFile.Robj = "out.list", outFile.txt = "out.txt", rm.marker.index = NULL, rm.subject.index = NULL,
                               miss.val = 9, num.splits = 10, topK = NULL, signt.eigen.level = 0.01, signal.outlier = FALSE, iter.outlier = 5, sigma.thresh = 6)
 {
     timeX <- proc.time()
@@ -318,7 +318,7 @@ eigenstrat <- function(genoFile = "eigenstratG.eg.txt", outFile.Robj = "out.list
     }
     if (!is.null(outFile.txt))
     {
-         	write.table(eVec[,1:10], file=outFile.txt, row.names=F, col.names=F, sep="\t")
+         	write.table(eVec[,1:topK], file=outFile.txt, row.names=F, col.names=F, sep="\t")
     }
 
     res.list

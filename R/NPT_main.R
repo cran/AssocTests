@@ -23,7 +23,7 @@
 ##' \code{varphi} is \code{0.5}, the test is based on the weighted sum of
 ##' NR10 and NR12.
 ##'
-##' @title The nonparametric trend test based on the nonparametric
+##' @title Nonparametric trend test based on the nonparametric
 ##' risk under a given genetic model
 ##' @param y a numeric vector of the observed quantitative trait
 ##' values in which the \emph{i}th element corresponds to the trait
@@ -35,7 +35,7 @@
 ##' @param varphi a numeric value which represents the genetic
 ##' model. It should be \code{0}, \code{0.5}, or \code{1}, which indicates that the
 ##' calculation is performed under the recessive, additive, or
-##' dominant model, respectively. The default is \code{0.5}.
+##' dominant model, respectively.
 ##' @return A list with class "\code{htest}" containing the following components:
 ##' \tabular{llll}{
 ##' \code{statistic} \tab \tab \tab \cr
@@ -53,7 +53,7 @@
 ##' @examples
 ##' g <- rbinom(1500, 2, 0.3)
 ##' y <- 0.5 + 0.25 * g + rgev(1500, 0, 0, 5)
-##' npt(y, g, varphi = 0.5)
+##' npt(y, g, 0.5)
 ##' @export
 npt <- function(y, g, varphi)
 {

@@ -11,7 +11,7 @@
 ##' models and test for the association between a single-nucleotide
 ##' polymorphism and a binary phenotype with or without correcting for
 ##' the covariates.
-##' @title Maximum Test: maximal value of the three Cochran-Armitage
+##' @title Maximum Test: maximum value of the three Cochran-Armitage
 ##' trend tests under the recessive, additive, and dominant models
 ##' @param y a numeric vector of the observed trait values in which
 ##' the \emph{i}th element is for the \emph{i}th subject. The elements
@@ -24,10 +24,10 @@
 ##' model. Each column is for one covariate. The default is \code{NULL}, that
 ##' is, there are no covariates to be adjusted for.
 ##' @param Score.test logical. If \code{TRUE}, the score tests are used. One
-##' of the \code{Score.test} and the \code{Wald.test} should be \code{FALSE},
+##' of \code{Score.test} and \code{Wald.test} should be \code{FALSE},
 ##' and the other should be \code{TRUE}. The default is \code{TRUE}.
 ##' @param Wald.test logical. If \code{TRUE}, the Wald tests are used. One of
-##' the \code{Score.test} and the \code{Wald.test} should be \code{FALSE},
+##' \code{Score.test} and \code{Wald.test} should be \code{FALSE},
 ##' and the other should be \code{TRUE}. The default is \code{FALSE}.
 ##' @param rhombus.formula logical. If \code{TRUE}, the p-value for the MAX3
 ##' is approximated by the rhombus formula. IF \code{FALSE}, the 2-fold
