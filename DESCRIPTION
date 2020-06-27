@@ -1,8 +1,8 @@
 Package: AssocTests
 Type: Package
 Title: Genetic Association Studies
-Version: 0.0-4
-Date: 2017-10-14
+Version: 1.0-0
+Date: 2020-6-26
 Author: Lin Wang [aut],
     Wei Zhang [aut],
     Qizhai Li [aut],
@@ -24,7 +24,10 @@ Description: Some procedures including EIGENSTRAT (a procedure for detecting and
 	risk), and nonparametric MAX3 (a procedure for testing for the association between a biallelic 
 	single nucleotide polymorphism and a quantitative trait using the maximum value of the three 
 	nonparametric trend tests derived for the recessive, additive, and dominant models), which are 
-	commonly used in genetic association studies.
+	commonly used in genetic association studies. To cite this package in publications use: 
+	Lin Wang, Wei Zhang, and Qizhai Li. AssocTests: An R Package for Genetic Association Studies. 
+	Journal of Statistical Software. 2020; 94(5): 1-26. doi:10.18637/jss.v094.i05. (The DOI in the CITATION 
+	is for a new JSS publication that will be registered after publication on CRAN.)
 License: GPL-2
 Collate: 'AssociationTestWithCorrectPS.R' 'CalculateGapK.R'
         'CalculateWAll.R' 'CalExpect.R' 'ChangeX.R' 'CorrMatNRTest.R'
@@ -34,8 +37,8 @@ Collate: 'AssociationTestWithCorrectPS.R' 'CalculateGapK.R'
         'RhombusFormula.R' 'ScoreTest.R' 'SimilarityMatrix.R'
         'SMT_main.R' 'Str2Num.R' 'TrendTest.R' 'TW_main.R'
         'UniformSample.R' 'UniformTest.R' 'WaldTest.R'
-RoxygenNote: 6.0.1
+RoxygenNote: 7.1.0
 NeedsCompilation: no
-Packaged: 2017-10-14 06:12:30 UTC; Administrator
+Packaged: 2020-06-27 01:14:45 UTC; admin
 Repository: CRAN
-Date/Publication: 2017-10-14 07:06:18 UTC
+Date/Publication: 2020-06-27 06:50:02 UTC

@@ -4,8 +4,13 @@
 \alias{pcoc}
 \title{PCoC for correcting for population stratification}
 \usage{
-pcoc(genoFile, outFile.txt = "pcoc.result.txt", n.MonteCarlo = 1000,
-  num.splits = 10, miss.val = 9)
+pcoc(
+  genoFile,
+  outFile.txt = "pcoc.result.txt",
+  n.MonteCarlo = 1000,
+  num.splits = 10,
+  miss.val = 9
+)
 }
 \arguments{
 \item{genoFile}{a txt file containing the genotypes (0, 1, 2, or
@@ -56,8 +61,14 @@ write.table(pcocG.eg, file = "pcocG.eg.txt", quote = FALSE,
        sep = "", row.names = FALSE, col.names = FALSE)
 pcoc(genoFile = "pcocG.eg.txt", outFile.txt = "pcoc.result.txt",
        n.MonteCarlo = 50, num.splits = 10, miss.val = 9)
+file.remove("pcocG.eg.txt", "pcoc.result.txt")
 }
 \references{
+Lin Wang, Wei Zhang, and Qizhai Li. AssocTests: An R Package 
+for Genetic Association Studies. \emph{Journal of Statistical Software}. 
+2020; 94(5): 1-26. doi:10.18637/jss.v094.i05. (The DOI in the CITATION is 
+for a new JSS publication that will be registered after publication on CRAN.)
+
 Q Li and K Yu. Improved Correction for Population
 Stratification in Genome-Wide Association Studies by Identifying
 Hidden Population Structures. \emph{Genetic Epidemiology}. 2008;

@@ -40,6 +40,11 @@ Find the significant eigenvalues of a matrix.
 tw(eigenvalues = c(5, 3, 1, 0), eigenL = 4, criticalpoint = 2.0234)
 }
 \references{
+Lin Wang, Wei Zhang, and Qizhai Li. AssocTests: An R Package 
+for Genetic Association Studies. \emph{Journal of Statistical Software}. 
+2020; 94(5): 1-26. doi:10.18637/jss.v094.i05. (The DOI in the CITATION is 
+for a new JSS publication that will be registered after publication on CRAN.)
+
 N Patterson, AL Price, and D Reich. Population
 Structure and Eigenanalysis. \emph{PloS Genetics}. 2006; 2(12):
 2074-2093.
@@ -52,7 +57,9 @@ A Bejan. Tracy-Widom and Painleve II: Computational
 Aspects and Realisation in S-Plus. In \emph{First Workshop of the ERCIM
 Working Group on Computing and Statistics}. 2008, Neuchatel, Switzerland.
 
-\url{www.vitrum.md/andrew/MScWrwck/codes.txt}
+A Bejan. Largest eigenvalues and sample covariance matrices. 
+\emph{MSc Dissertation, the university of Warwick}. 2005. (This function
+was written by A Bejan and publicly downloadable.)
 }
 \author{
 Lin Wang, Wei Zhang, and Qizhai Li.

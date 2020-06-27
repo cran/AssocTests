@@ -4,8 +4,14 @@
 \alias{smt}
 \title{Single-marker test}
 \usage{
-smt(y, g, covariates = NULL, min.count = 5, missing.rate = 0.2,
-  y.continuous = FALSE)
+smt(
+  y,
+  g,
+  covariates = NULL,
+  min.count = 5,
+  missing.rate = 0.2,
+  y.continuous = FALSE
+)
 }
 \arguments{
 \item{y}{a numeric vector of the observed trait values in which
@@ -95,6 +101,12 @@ y <- rep(c(0, 1), 25)
 g <- sample(c(0, 1, 2), 50, replace = TRUE)
 smt(y, g, covariates = NULL, min.count=5,
         missing.rate=0.20, y.continuous = FALSE)
+}
+\references{
+Lin Wang, Wei Zhang, and Qizhai Li. AssocTests: An R Package 
+for Genetic Association Studies. \emph{Journal of Statistical Software}. 
+2020; 94(5): 1-26. doi:10.18637/jss.v094.i05. (The DOI in the CITATION is 
+for a new JSS publication that will be registered after publication on CRAN.)
 }
 \author{
 Lin Wang, Wei Zhang, and Qizhai Li.
