@@ -61,8 +61,7 @@ nmax3(y, g)
 \references{
 Lin Wang, Wei Zhang, and Qizhai Li. AssocTests: An R Package 
 for Genetic Association Studies. \emph{Journal of Statistical Software}. 
-2020; 94(5): 1-26. doi:10.18637/jss.v094.i05. (The DOI in the CITATION is 
-for a new JSS publication that will be registered after publication on CRAN.)
+2020; 94(5): 1-26.
 
 W Zhang and Q Li. Nonparametric Risk and Nonparametric
 Odds in Quantitative Genetic Association Studies. \emph{Science

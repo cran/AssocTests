@@ -49,8 +49,7 @@
 ##' @author Lin Wang, Wei Zhang, and Qizhai Li.
 ##' @references Lin Wang, Wei Zhang, and Qizhai Li. AssocTests: An R Package 
 ##' for Genetic Association Studies. \emph{Journal of Statistical Software}. 
-##' 2020; 94(5): 1-26. doi:10.18637/jss.v094.i05. (The DOI in the CITATION is 
-##' for a new JSS publication that will be registered after publication on CRAN.)
+##' 2020; 94(5): 1-26.
 ##' @references Q Li, G Zheng, Z Li, and K Yu. Efficient Approximation
 ##' of P Value of the Maximum of Correlated Tests, with Applications
 ##' to Genome-Wide Association Studies. \emph{Annals of Human

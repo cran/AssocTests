@@ -42,8 +42,7 @@ tw(eigenvalues = c(5, 3, 1, 0), eigenL = 4, criticalpoint = 2.0234)
 \references{
 Lin Wang, Wei Zhang, and Qizhai Li. AssocTests: An R Package 
 for Genetic Association Studies. \emph{Journal of Statistical Software}. 
-2020; 94(5): 1-26. doi:10.18637/jss.v094.i05. (The DOI in the CITATION is 
-for a new JSS publication that will be registered after publication on CRAN.)
+2020; 94(5): 1-26.
 
 N Patterson, AL Price, and D Reich. Population
 Structure and Eigenanalysis. \emph{PloS Genetics}. 2006; 2(12):

@@ -122,8 +122,7 @@ file.remove("eigenstratG.eg.txt", "eigenstrat.result.list", "eigenstrat.result.t
 \references{
 Lin Wang, Wei Zhang, and Qizhai Li. AssocTests: An R Package 
 for Genetic Association Studies. \emph{Journal of Statistical Software}. 
-2020; 94(5): 1-26. doi:10.18637/jss.v094.i05. (The DOI in the CITATION is 
-for a new JSS publication that will be registered after publication on CRAN.)
+2020; 94(5): 1-26.
 
 AL Price, NJ Patterson, RM Plenge, ME Weinblatt, NA
 Shadick, and D Reich. Principal Components Analysis Corrects for
